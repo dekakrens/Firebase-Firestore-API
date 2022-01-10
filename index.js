@@ -15,10 +15,11 @@ app.get('/', (req, res) => {
     );
 });
 
-app.get('/posyandu', (req, res) => {
+//match databaseName with your database name
+app.get('/databaseName', (req, res) => {
     const db = fire.firestore();
     let wholeData = []
-    db.collection('posyandu').orderBy('waktu', 'desc').get().then(snapshot => {
+    db.collection('databaseName').orderBy('date', 'desc').get().then(snapshot => {
         snapshot.forEach(doc => {
             wholeData.push(doc.data())
         });
@@ -28,16 +29,17 @@ app.get('/posyandu', (req, res) => {
     });
 });
 
-app.post('/posyandu', (req, res) => {
+app.post('/databaseName', (req, res) => {
     const db = fire.firestore();
-    db.collection('posyandu').add({
-        suhu: req.body.suhu,
-        tinggi: req.body.tinggi,
-        berat: req.body.berat,
-        waktu: new Date()
+    db.collection('databaseName').add({
+        //change this collections according to your need
+        temperature: req.body.suhu,
+        height: req.body.tinggi,
+        weight: req.body.berat,
+        date: new Date()
     });
     res.send({
-        waktu: new Date(),
+        date: new Date(),
         status: 'POST Success!'
     });
 });
