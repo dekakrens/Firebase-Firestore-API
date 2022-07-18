@@ -1,7 +1,7 @@
 const app = require("express")();
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const axios = require("axios");
+// const axios = require("axios");
 
 const PORT = process.env.PORT | 5000;
 
@@ -15,16 +15,16 @@ app.get("/", (req, res) => {
   );
 });
 
-app.get("/mutu", (req, res) => {
-  axios
-    .get("https://stage-api-ops.mutuapps.com/v1/operation/activity")
-    .then((axiosRes) => {
-      res.send(axiosRes.data);
-    })
-    .catch((e) => {
-      console.log(e.response);
-    });
-});
+// app.get("/mutu", (req, res) => {
+//   axios
+//     .get("https://stage-api-ops.mutuapps.com/v1/operation/activity")
+//     .then((axiosRes) => {
+//       res.send(axiosRes.data);
+//     })
+//     .catch((e) => {
+//       console.log(e.response);
+//     });
+// });
 
 app.listen(PORT, () => {
   console.log(`Server has been started. Listening on port ${PORT}`);
