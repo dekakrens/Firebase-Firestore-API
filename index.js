@@ -20,6 +20,9 @@ app.get("/mutu", (req, res) => {
     .get("https://stage-api-ops.mutuapps.com/v1/operation/activity")
     .then((axiosRes) => {
       res.send(axiosRes.data);
+    })
+    .catch((e) => {
+      console.log(e.response);
     });
 });
 
